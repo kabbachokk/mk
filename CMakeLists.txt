@@ -18,5 +18,3 @@ set(KERN_DIR ${CMAKE_CURRENT_SOURCE_DIR}/kernel)
 set(ARCH_DIR ${CMAKE_CURRENT_SOURCE_DIR}/${ARCH})
 
 add_subdirectory(kernel)
-
-target_include_directories(kernel PRIVATE "${CMAKE_CURRENT_BINARY_DIR}")
