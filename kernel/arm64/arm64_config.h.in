@@ -1,0 +1,6 @@
+#ifndef __ARM64_CONFIG_H__
+#define __ARM64_CONFIG_H__
+
+#cmakedefine DUMMY_OPTION
+
+#endif //__ARM64_CONFIG_H__

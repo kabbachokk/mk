@@ -1,5 +1,9 @@
 cmake_minimum_required(VERSION 3.15)
-project(MyKernel LANGUAGES CXX ASM)
+
+set(CMAKE_TOOLCHAIN_FILE "aarch64-none-elf.cmake" CACHE PATH "")
+set(CMAKE_GENERATOR Ninja)
+
+project(mk LANGUAGES C CXX ASM)
 
 set(ARCH "arm64" CACHE STRING "Target architecture (arm64 or x64)")
 set_property(CACHE ARCH PROPERTY STRINGS "arm64" "x64")
@@ -10,14 +14,9 @@ if(NOT DEFINED CMAKE_TOOLCHAIN_FILE)
     message(FATAL_ERROR "CMAKE_TOOLCHAIN_FILE must be specified for cross-compilation")
 endif()
 
-set(KERN_DIR ${CMAKE_CURRENT_SOURCE_DIR}/kern)
+set(KERN_DIR ${CMAKE_CURRENT_SOURCE_DIR}/kernel)
 set(ARCH_DIR ${CMAKE_CURRENT_SOURCE_DIR}/${ARCH})
 
-add_subdirectory(kern)
-add_subdirectory(${ARCH})
+add_subdirectory(kernel)
 
-# Итоговый таргет ядра
-add_executable(kernel
-    $<TARGET_OBJECTS:kern_objects>
-    $<TARGET_OBJECTS:arch_objects>
-)
+target_include_directories(kernel PRIVATE "${CMAKE_CURRENT_BINARY_DIR}")

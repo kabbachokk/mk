@@ -10,8 +10,8 @@ The goal of release 0.1 is to have a working kernel that manages interrupts, thr
 > there is a list of abstract top-level tasks, during work the abstract task is broken down into small specific tasks and progress is noted in this roadmap.
 
 - [ ] repository setup
-  - [x] basic git setup (0f8a027)
-  - [ ] build environment
+  - [x] basic git setup
+  - [x] build environment
   - [ ] \(Optional) ci/cd
 - [ ] machine-dependent backend bootstrap
 - [ ] clock
